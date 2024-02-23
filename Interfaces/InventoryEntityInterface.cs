@@ -60,7 +60,7 @@ namespace InventoryLib.Interfaces
         public override List<Item> GetItems()
         {
             if (!TileEntity.ByPosition.TryGetValue(GetTopLeft(x, y), out TileEntity TE)) return new();
-            InventoryTileEntity tileEntity = TE as InventoryTileEntity;
+            IInventoryTileEntity tileEntity = TE as IInventoryTileEntity;
             if (tileEntity == null) return new List<Item>();
             return tileEntity.GetExtractableItemsForInterface(this).ToList();
         }
@@ -68,7 +68,7 @@ namespace InventoryLib.Interfaces
         public override bool InsertItem(Item item)
         {
             if (!TileEntity.ByPosition.TryGetValue(GetTopLeft(x, y), out TileEntity TE)) return new();
-            InventoryTileEntity tileEntity = TE as InventoryTileEntity;
+            IInventoryTileEntity tileEntity = TE as IInventoryTileEntity;
             if (tileEntity == null) return false;
             return tileEntity.InsertItem(item) || tileEntity.InsertItem(item, this);
         }
@@ -76,7 +76,7 @@ namespace InventoryLib.Interfaces
         public override bool ExtractItem(Item item)
         {
             if (!TileEntity.ByPosition.TryGetValue(GetTopLeft(x, y), out TileEntity TE)) return new();
-            InventoryTileEntity tileEntity = TE as InventoryTileEntity;
+            IInventoryTileEntity tileEntity = TE as IInventoryTileEntity;
             if (tileEntity == null) return false;
             return tileEntity.ExtractItem(item) || tileEntity.ExtractItem(item, this);
         }

@@ -12,7 +12,7 @@ using Terraria.ModLoader;
 
 namespace InventoryLib
 {
-    public interface InventoryTileEntity
+    public interface IInventoryTileEntity
     {
 
         /// <summary>
